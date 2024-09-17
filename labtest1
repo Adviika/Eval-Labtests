@@ -1,0 +1,39 @@
+import numpy as np
+
+def create_flight():
+    dtype_flight = [('number','14'),('departurestation','U10'),('arrivalstation','U20')
+                    ,('time','U100'),('seatB','U100'),('seatE','U100')]
+
+    flight = np.array([
+        (101,'A','B','10:00',10),
+        (102,'c','D','10:00',10),
+        (103,'E','F','10:00',10),
+        (104,'G','H','10:00',10)
+        ],dtype=  dtype_flight)
+    return flight
+    
+    def create_pasengers():
+        dtype_passenger = [('id','14'),('name','U10'),('reservations','0')]
+        passenger = np.array([
+        (101,'Advika',[("101",'1A'),("101",'2A')]),
+        (102,'Devanshi',("102",'1A')),
+        (103,'Madhav',("103",'1A'),("103",'2A'))
+    ],dtype =  dtype_passenger)
+    return passengers
+                                
+
+def findreservation(passenger_id,record):
+    for passengers in record:
+        if passengers['id']==passenger_id:
+            return passengers.listofreservations
+
+def fullseats(flight_schedule):
+    return [flight['number'] for flight in flight_schedule if flight['seatB']==0 and flight['seatE']==0]
+
+def main():
+    P = create_pasengers()
+    F = create_flight()
+    
+    p_id = '101'
+    print(findreservation(p_id,P))
+    print(F)
